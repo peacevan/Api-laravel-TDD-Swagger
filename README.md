@@ -127,12 +127,19 @@ http://localhost:8000
 ```
 http://localhost:8000/api-documentation#
 ```
-* Token de acesso  
+* Token de acesso
+Um "token do tipo Bearer" refere-se a um tipo específico de token de autenticação
+usado em protocolos de autenticação, como o OAuth 2.0. Esse tipo de token é chamado de
+"Bearer Token" porque o detentor do token (geralmente um cliente ou aplicativo) simplesmente
+o "porta" (ou "apresenta") ao servidor para obter acesso a recursos protegidos, sem a necessidade de
+apresentar credenciais adicionais, como nome de usuário e senha a cada solicitação.
+  
 através do link  da documentação pode ser realizado os testes.
-é preciso gerar o token 
 
-para ter acesso  aos endpoints é preciso gerar o token de autenticação em 
-http://127.0.0.1:8000/api/sanctum/token
+
+- para ter acesso  aos endpoints protrgidoss é preciso gerar o token de autenticação em 
+ http://127.0.0.1:8000/api/sanctum/token
+- token precisa ser passado no cabeçalho da requisição
 
 <img src="public/img/token_autenticacao.png" alt="exemplo imagem">
 * exemplo de uso no Insominia
@@ -143,7 +150,7 @@ http://127.0.0.1:8000/api/sanctum/token
 <img src="public/img/insert_cliente.png" alt="exemplo imagem">
 
 * Testando os endpoints via Swagger
- - Gerar o token
+ - Gerar o token pelo swagger
  - na sessão sanctum autetication criar em try in out 
 <img src="public/img/gerar_token_swagger.png" alt="exemplo imagem">
  - inserir login e senha  e nome do device
