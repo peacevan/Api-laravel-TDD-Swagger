@@ -69,5 +69,11 @@ O servidor estará disponível em:
 ```
 http://localhost:8000
 ```
+A documentação da API está em:
+
+```
+http://localhost:8000/api-documentation#
+```
+através do link  da documentação pode ser realizado os testes.
 
 [⬆ Voltar ao topo](#Teste_Back_end_PHP)<br>
