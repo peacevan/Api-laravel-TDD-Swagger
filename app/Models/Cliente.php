@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\HasOne;
 class Cliente extends Model
 {
     use Traits\Scope;
@@ -23,4 +23,12 @@ class Cliente extends Model
         "id_grupo",
         "data_fundacao",
     ];
+
+      /**
+     * Get the grupo associated with the cliente.
+     */
+    public function grupo(): HasOne
+    {
+        return $this->hasOne(Grupo::class);
+    }
 }

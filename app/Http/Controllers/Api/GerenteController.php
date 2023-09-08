@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Gerente;
-use App\Http\Requests\GerenteRequest;
+use App\Http\Requests\Api\GerenteRequest;
 use App\Http\Resources\GerenteResource;
 use App\Services\GerenteServices;
 use App\Http\Controllers\Controller;
@@ -92,7 +92,6 @@ class GerenteController extends Controller
     {
         $gerenteServices = new GerenteServices();
         $gerenteServices->destroy($gerente);
-
         return response()->json("DELETED", 204);
     }
 }
