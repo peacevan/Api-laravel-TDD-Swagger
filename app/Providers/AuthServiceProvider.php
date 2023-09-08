@@ -26,11 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('maneger-groups', function (User $user) {
+        Gate::define('can-maneger-groups', function (User $user) {
             return $user->nivel == 2;
         });
 
-        Gate::define('viewer-groups', function (User $user) {
+        Gate::define('can-viewer-groups', function (User $user) {
 
             if (($user->nivel == 1)||($user->nivel == 2)) {
                 return true;
@@ -38,7 +38,7 @@ class AuthServiceProvider extends ServiceProvider
             return false;
         });
 
-        Gate::define('add-remove-client', function (User $user) {
+        Gate::define('can-add-remove-client', function (User $user) {
             if (($user->nivel == 1)) {
                 return true;
             }

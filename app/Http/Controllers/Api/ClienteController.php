@@ -47,7 +47,7 @@ class ClienteController extends Controller
     {
 
 
-        if ($this->deniesPermission("add-remove-client")){
+        if ($this->deniesPermission("can-add-remove-client")){
             return response()->json("Acess Denied", 403);
         }
         $clienteServices = new ClienteServices();
@@ -75,6 +75,11 @@ class ClienteController extends Controller
      */
     public function update(ClienteRequest $request, Cliente $cliente)
     {
+
+
+        if ($this->deniesPermission("can-add-remove-client")){
+            return response()->json("Acess Denied", 403);
+        }
         $clienteServices = new ClienteServices();
         $updated = $clienteServices->update($request->validated(), $cliente);
 
@@ -92,6 +97,11 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
+
+
+        if ($this->deniesPermission("can-add-remove-client")){
+            return response()->json("Acess Denied", 403);
+        }
         $clienteServices = new ClienteServices();
         $clienteServices->destroy($cliente);
         return response()->json("DELETED", 204);

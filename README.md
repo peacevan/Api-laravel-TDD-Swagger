@@ -21,17 +21,21 @@ Em nossa auto peças surgiu a demanda que nossos gerentes pudessem separar nosso
 - [x] Gerentes: Código Único, Nome, E-mail, Nível;
 - [x] Grupos: Código Único, Nome;
 - [x] Clientes e Gerentes podem ser populados automaticamente.
+
+  <img src="public/img/EER_diagram.png" alt="exemplo imagem">
 Objetivo
 - [x] Queremos endpoints para operar os grupos e visualizar os clientes de um grupo.
+ obs: edpoints documetados em: 
+ http://localhost:8000/api-documentation#
 
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] implementar todo os requisitos solicitados
-- [x] documentar API
+- [x] implementar todos os requisitos solicitados
+- [x] documentar a API com Swagger
 - [ ] Refatorar o código 
-- [ ] Dockerizar o projeto 
+- [x] Dockerizar o projeto 
 - [ ] Testes de integração;
 - [ ] Testes unitários;
 - [ ] Tratamento de erros.

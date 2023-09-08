@@ -24,6 +24,11 @@ class GrupoController extends Controller
 
     public function index()
     {
+
+        if ($this->deniesPermission("can-viewer-groups")){
+            return response()->json("Acess Denied", 403);
+        }
+
         $grupoServices = new GrupoServices();
         $grupos = $grupoServices->index();
         return GrupoResource::collection($grupos);
@@ -38,6 +43,10 @@ class GrupoController extends Controller
     public function store(GrupoRequest $request)
     {
 
+        if ($this->deniesPermission("can-maneger-groups")){
+            return response()->json("Acess Denied", 403);
+        }
+
         $grupoServices = new GrupoServices();
         $grupo = $grupoServices->store($request->validated());
         return new GrupoResource($grupo);
@@ -45,6 +54,10 @@ class GrupoController extends Controller
 
     public function show(Grupo $grupo)
     {
+        if ($this->deniesPermission("can-viewer-groups")){
+            return response()->json("Acess Denied", 403);
+        }
+
         return new GrupoResource($grupo);
     }
 
@@ -57,6 +70,11 @@ class GrupoController extends Controller
      */
     public function update(GrupoRequest $request, Grupo $grupo)
     {
+
+        if ($this->deniesPermission("can-maneger-groups")){
+            return response()->json("Acess Denied", 403);
+        }
+
         $grupoServices = new GrupoServices();
         $updated = $grupoServices->update($request->validated(), $grupo);
 
@@ -74,9 +92,16 @@ class GrupoController extends Controller
      */
     public function destroy(Grupo $grupo)
     {
+
+        if ($this->deniesPermission("can-maneger-groups")){
+            return response()->json("Acess Denied", 403);
+        }
+
         $grupoServices = new GrupoServices();
         $grupoServices->destroy($grupo);
 
-        return response()->json("DELETED", 204);
+        return [
+            'message' => 'Grupo excluído com sucesso !',
+       ];
     }
 }
