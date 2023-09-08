@@ -38,7 +38,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Dockerizar o projeto 
 - [ ] Testes de integração;
 - [ ] Testes unitários;
-- [ ] Tratamento de erros.
+- [x] Tratamento de erros.
 - [ ] implementar autenticação SSO com KeyClock[melhoria]
 - [ ] realizar deploy para a AWS e disponibilizar um IP público para realização de testes
 
