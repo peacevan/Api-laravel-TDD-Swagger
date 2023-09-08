@@ -67,6 +67,10 @@ php artisan migrate
 php artisan serve
 http://localhost:8000
 ```
+não deu tempo atualizar os migrations por tanto será necessário 
+importar algumas tabelas  que estar no script 
+dabase/tabala.sql
+Em database tambe eoncotra o diagram de entidade relacional
 
 Para executar o projeto  teste_back_end_php no DOCKER siga estas etapas:
 
@@ -117,11 +121,24 @@ O servidor estará disponível em:
 ```
 http://localhost:8000
 ```
-A documentação da API está em:
+* A documentação da API está em:
 
 ```
 http://localhost:8000/api-documentation#
 ```
+* Token de acesso  
 através do link  da documentação pode ser realizado os testes.
+é preciso gerar o token 
+
+para ter acesso  aos endpoints é preciso gerar o token de autenticação em 
+http://127.0.0.1:8000/api/sanctum/token
+
+<img src="public/img/token_autenticac.png" alt="exemplo imagem">
+* exemplo de uso no Insominia
+* Inserindo Grupo :
+<img src="public/img/insert_grupo.png" alt="exemplo imagem">
+
+* Inserindo Cliente :
+<img src="public/img/insert_cliente.png" alt="exemplo imagem">
 
 [⬆ Voltar ao topo](#Teste_Back_end_PHP)<br>
