@@ -20,7 +20,7 @@ Em nossa auto peças surgiu a demanda que nossos gerentes pudessem separar nosso
 - [x] Clientes: Código Único, CNPJ, Nome, Data Fundação;
 - [x] Gerentes: Código Único, Nome, E-mail, Nível;
 - [x] Grupos: Código Único, Nome;
-- [x] Clientes e Gerentes podem ser populados automaticamente.
+- [ ] Clientes e Gerentes podem ser populados automaticamente.
 
   <img src="public/img/EER_diagram.png" alt="exemplo imagem">
 Objetivo
@@ -35,11 +35,12 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] implementar todos os requisitos solicitados
 - [x] documentar a API com Swagger
 - [ ] Refatorar o código 
-- [x] Dockerizar o projeto 
+- [x] Dockerizar o Projeto 
 - [ ] Testes de integração;
-- [ ] Testes unitários;
+- [x] Testes unitários;
 - [x] Tratamento de erros.
-- [ ] implementar autenticação SSO com KeyClock[melhoria]
+- [ ] implementar autenticação SSO com KeyClock [melhorias]
+- [ ] Clientes e Gerentes podem ser populados automaticamente.
 - [ ] realizar deploy para a AWS e disponibilizar um IP público para realização de testes
 
 ## 💻 Pré-requisitos
@@ -140,5 +141,15 @@ http://127.0.0.1:8000/api/sanctum/token
 
 * Inserindo Cliente :
 <img src="public/img/insert_cliente.png" alt="exemplo imagem">
+
+* Testando os endpoints via Swagger
+ - Gerar o token
+ - na sessão sanctum autetication criar em try in out 
+<img src="public/img/gerar_token_swagger.png" alt="exemplo imagem">
+ - inserir login e senha  e nome do device
+ - clica em authorize  e inserir o token para liberar os endpoints protegidos
+   <img src="public/img/authorize.png" alt="exemplo imagem">
+
+
 
 [⬆ Voltar ao topo](#Teste_Back_end_PHP)<br>
