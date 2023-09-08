@@ -64,6 +64,47 @@ php artisan serve
 http://localhost:8000
 ```
 
+Para executar o projeto  teste_back_end_php no DOCKER siga estas etapas:
+
+
+1. Instalar o docker-compose, PHP na versão 8.0 e Mysql
+
+2. Docker
+
+2.1 Baixar docker
+``` 
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker
+sudo systemctl enable docker
+
+```
+3.2 imagem do php 8.0
+``` 
+   
+```
+
+4. Instalar docker-compose
+``` 
+   sudo apt install docker-compose
+```
+
+5. Execute o comando
+``` 
+   php composer.phar update
+``` 
+6. Execute o seguinte comando após atualizar o framework
+``` 
+    php composer.phar install -vvv
+``` 
+``` 
+    docker-compose up
+``` 
+7. Acessa a seguinte url:
+``` 
+    locaohost:8000
+``` 
+
 ## ☕ Usando teste_back_end_php
 
 Para usar teste_back_end_php, siga estas etapas:
