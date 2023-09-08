@@ -8,7 +8,6 @@ use App\Http\Resources\ClienteResource;
 use App\Models\Cliente;
 use App\Services\ClienteServices;
 
-
 class ClienteController extends Controller
 {
     /**
@@ -20,14 +19,42 @@ class ClienteController extends Controller
     {
         $clienteServices = new ClienteServices();
         $clientes = $clienteServices->initialize();
-
         return ClienteResource::collection($clientes);
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     tags={"Cliente"},
+     *     summary="Listar Clientes",
+     *     description="Retorna todos os Clientes",
+     *     path="/api/cliente",
+     *     security={ {"bearerToken":{}} },
+     *     @OA\Response(
+     *          response=200,
+     *          description="Clientes",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="id", type="string", example="5"),
+     *              @OA\Property(property="name", type="string", example="Cliente 1 Teste"),
+     *              @OA\Property(property="cnpj", type="string", example="000220007878"),
+     *              @OA\Property(property="data_fundacao", type="string", example="17/05/2010"),
+     *            )
+     *     ),
+     *     @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *          )
+     *     ),
+     *     @OA\Response(
+     *          response=422,
+     *          description="Campo Incorreto",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="message", type="string", example="esse nome já está sendo usado"),
+     *              @OA\Property(property="errors", type="string", example="..."),
+     *          )
+     *      )
+     * ),
      */
     public function index()
     {
@@ -38,16 +65,48 @@ class ClienteController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\POST(
+     *  tags={"Cliente"},
+     *  summary="Criar um novo Cliente",
+     *  description="esse endpoint cria um novo Cliente",
+     *  path="/api/cliente",
+     *  @OA\RequestBody(
+     *      @OA\MediaType(
+     *          mediaType="application/x-www-form-urlencoded",
+     *          @OA\Schema(
+     *             required={"nome"},
+     *             @OA\Property(property="nome", type="string", example="Ivan Amado"),
+     *             required={"cnpj"},
+     *             @OA\Property(property="cnpj", type="string", example="1212122122122"),
+     *             required={"data_fundacao"},
+     *             @OA\Property(property="data_fundacao", type="date", example="17/05/2010"),
+     *              required={"id_grupo"},
+     *             @OA\Property(property="id_grupo", type="integer", example=3),
      *
-     * @param  \App\Http\Requests\ClienteRequest  $request
-     * @return \Illuminate\Http\Response
+     *          )
+     *      ),
+     *  ),
+     *  @OA\Response(
+     *    response=200,
+     *    description="Grupo Cliado",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="group created successfully!")
+     *    )
+     *  ),
+     *  @OA\Response(
+     *    response=422,
+     *    description="Incorrect fields",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="The name has already been taken. (and 2 more errors)"),
+     *       @OA\Property(property="errors", type="string", example="..."),
+     *    )
+     *  )
+     * )
      */
     public function store(ClienteRequest $request)
     {
 
-
-        if ($this->deniesPermission("add-remove-client")){
+        if ($this->deniesPermission("add-remove-client")) {
             return response()->json("Acess Denied", 403);
         }
         $clienteServices = new ClienteServices();
@@ -67,11 +126,50 @@ class ClienteController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\ClienteRequest  $request
-     * @param  \App\Models\Cliente  $cliente
-     * @return \Illuminate\Http\Response
+     * @OA\PUT(
+     *  tags={"Cliente"},
+     *  summary="Mudar dados do cliente",
+     *  description="esse endpoint muda os dados do cliente",
+     *  path="/api/cliente/{id}",
+     *  security={ {"bearerToken":{}} },
+     *  @OA\RequestBody(
+     *      @OA\MediaType(
+     *          mediaType="application/x-www-form-urlencoded",
+     *          @OA\Schema(
+     *          required={"nome"},
+     *             @OA\Property(property="nome", type="string", example="Ivan Amado"),
+     *             required={"cnpj"},
+     *             @OA\Property(property="cnpj", type="string", example="1212122122122"),
+     *             required={"data_fundacao"},
+     *             @OA\Property(property="data_fundacao", type="date", example="17/05/2010"),
+     *              required={"id_grupo"},
+     *             @OA\Property(property="id_grupo", type="integer", example=3),
+     *          )
+     *      ),
+     *  ),
+     *  @OA\Response(
+     *    response=200,
+     *    description="Cliente atualizado com sucesso!",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Cliente atualizado com sucesso!"),
+     *    )
+     *  ),
+     *  @OA\Response(
+     *    response=401,
+     *    description="Unauthenticated",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *    )
+     *  ),
+     *  @OA\Response(
+     *      response=422,
+     *      description="Incorrect fields",
+     *      @OA\JsonContent(
+     *         @OA\Property(property="message", type="string", example="Esse Nome já foi cadastrado"),
+     *         @OA\Property(property="errors", type="string", example="..."),
+     *      )
+     *   )
+     * )
      */
     public function update(ClienteRequest $request, Cliente $cliente)
     {
@@ -84,11 +182,37 @@ class ClienteController extends Controller
         return response()->json([], 202);
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Cliente  $cliente
-     * @return \Illuminate\Http\Response
+     * @OA\DELETE(
+     *  tags={"Cliente"},
+     *  summary="Remove um Cliente",
+     *  description="Esse Endpoint remove um Gerente.",
+     *  path="/api/cliente/{id}",
+     *  security={ {"bearerToken":{}} },
+     *  @OA\Response(
+     *    response=204,
+     *    description="Remove um cliente",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Cliente removido com sucesso !")
+     *    )
+     *  ),
+     *  @OA\Response(
+     *    response=401,
+     *    description="Unauthenticated",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Unauthenticated"),
+     *    )
+     *  ),
+     *  @OA\Response(
+     *    response=422,
+     *    description="Incorrect fields",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="nome do Cliente é obrigatório."),
+     *       @OA\Property(property="errors", type="string", example="..."),
+     *    )
+     *  )
+     * )
      */
     public function destroy(Cliente $cliente)
     {
