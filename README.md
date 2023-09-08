@@ -30,10 +30,13 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [x] implementar todo os requisitos solicitados
 - [x] documentar API
-- [x] Refatorar o código 
+- [ ] Refatorar o código 
 - [ ] Dockerizar o projeto 
-- [ ] implementar auteticação SSO com KeyClock[melhoria]
-- [ ] realizar deploy para a AWS e diponibilizar um IP público para realização de testes
+- [ ] Testes de integração;
+- [ ] Testes unitários;
+- [ ] Tratamento de erros.
+- [ ] implementar autenticação SSO com KeyClock[melhoria]
+- [ ] realizar deploy para a AWS e disponibilizar um IP público para realização de testes
 
 ## 💻 Pré-requisitos
 

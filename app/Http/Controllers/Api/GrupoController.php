@@ -1,12 +1,11 @@
 <?php
 namespace App\Http\Controllers\Api;
 
-use App\Models\Grupo;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\GrupoRequest;
 use App\Http\Resources\GrupoResource;
+use App\Models\Grupo;
 use App\Services\GrupoServices;
-use App\Http\Controllers\Controller;
-
 
 class GrupoController extends Controller
 {
@@ -23,9 +22,6 @@ class GrupoController extends Controller
         return GrupoResource::collection($grupos);
     }
 
-
-
-
     public function index()
     {
         $grupoServices = new GrupoServices();
@@ -33,48 +29,19 @@ class GrupoController extends Controller
         return GrupoResource::collection($grupos);
     }
 
-        /**
-     * @OA\POST(
-     *  tags={"Grupo"},
-     *  summary="Create a new Group",
-     *  description="esse endpoint cria um novo grupor",
-     *  path="/api/grupo",
-     *  @OA\RequestBody(
-     *      @OA\MediaType(
-     *          mediaType="application/x-www-form-urlencoded",
-     *          @OA\Schema(
+    /**
+     * Store a newly created resource in storage.
      *
-     *             @OA\Property(property="name", type="string", example="Ivan Amado"),
-     *
-      *          )
-     *      ),
-     *  ),
-     *  @OA\Response(
-     *    response=200,
-     *    description="Grupo Cliado",
-     *    @OA\JsonContent(
-     *       @OA\Property(property="message", type="string", example="group created successfully!")
-     *    )
-     *  ),
-     *  @OA\Response(
-     *    response=422,
-     *    description="Incorrect fields",
-     *    @OA\JsonContent(
-     *       @OA\Property(property="message", type="string", example="The name has already been taken. (and 2 more errors)"),
-     *       @OA\Property(property="errors", type="string", example="..."),
-     *    )
-     *  )
-     * )
+     * @param  \App\Http\Requests\GrupoRequest  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(GrupoRequest $request)
     {
-
 
         $grupoServices = new GrupoServices();
         $grupo = $grupoServices->store($request->validated());
         return new GrupoResource($grupo);
     }
-
 
     public function show(Grupo $grupo)
     {
@@ -93,8 +60,7 @@ class GrupoController extends Controller
         $grupoServices = new GrupoServices();
         $updated = $grupoServices->update($request->validated(), $grupo);
 
-        if ($updated)
-        {
+        if ($updated) {
             return new GrupoResource($grupo);
         }
         return response()->json([], 202);
