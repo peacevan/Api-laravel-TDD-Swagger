@@ -1,4 +1,4 @@
-# Teste Back-end PHP
+# Teste_Back_end_php
 
 <img src="public/img/Swagger.png" alt="exemplo imagem">
 
@@ -28,43 +28,46 @@ Objetivo
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] Tarefa 1
-- [x] Tarefa 2
-- [x] Tarefa 3
-- [ ] Tarefa 4
-- [ ] Tarefa 5
+- [x] implementar todo os requisitos solicitados
+- [x] documentar API
+- [x] Refatorar o código 
+- [ ] Dockerizar o projeto 
+- [ ] implementar auteticação SSO com KeyClock[melhoria]
+- [ ] realizar deploy para a AWS e diponibilizar um IP público para realização de testes
 
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
-<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
-* Você instalou a versão mais recente de `<linguagem / dependência / requeridos>`
-* Você tem uma máquina `<Windows / Linux / Mac>`. Indique qual sistema operacional é compatível / não compatível.
-* Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
 
-## 🚀 Instalando <nome_do_projeto>
+* Você instalou  a versão PHP 8 
+* Composer: O Composer é um gerenciador de pacotes PHP que é usado para instalar e gerenciar as dependências do Laravel.
 
-Para instalar o <nome_do_projeto>, siga estas etapas:
+* Servidor Web: Você precisará de um servidor web para executar seu aplicativo Laravel
+* Banco de Dados: Mysql 8.0
 
-Linux e macOS:
-```
-<comando_de_instalação>
-```
+* Extensões PHP: Certifique-se de que as extensões PHP necessárias estejam habilitadas no seu servidor. O Laravel pode precisar de extensões como PDO, OpenSSL, Mbstring, Tokenizer, XML, Ctype e JSON.
+## 🚀 Instalando teste_back_end_php
 
-Windows:
-```
-<comando_de_instalação>
-```
-
-## ☕ Usando <nome_do_projeto>
-
-Para usar <nome_do_projeto>, siga estas etapas:
+Para instalar o teste_back_end_php, siga estas etapas:
 
 ```
-<exemplo_de_uso>
+git clone https://github.com/peacevan/teste-back-end-php-4
+cd teste-back-end-php-4
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+http://localhost:8000
 ```
 
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
+## ☕ Usando teste_back_end_php
 
+Para usar teste_back_end_php, siga estas etapas:
 
-[⬆ Voltar ao topo](#Teste Back-end PHP)<br>
+O servidor estará disponível em:
+```
+http://localhost:8000
+```
+
+[⬆ Voltar ao topo](#Teste_Back_end_PHP)<br>
