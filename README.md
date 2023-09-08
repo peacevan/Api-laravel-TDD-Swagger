@@ -46,7 +46,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-* Você instalou  a versão PHP 8 
+* Instalação do versão PHP 8.x 
 * Composer: O Composer é um gerenciador de pacotes PHP que é usado para instalar e gerenciar as dependências do Laravel.
 
 * Servidor Web: Você precisará de um servidor web para executar seu aplicativo Laravel
