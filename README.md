@@ -133,7 +133,7 @@ através do link  da documentação pode ser realizado os testes.
 para ter acesso  aos endpoints é preciso gerar o token de autenticação em 
 http://127.0.0.1:8000/api/sanctum/token
 
-<img src="public/img/token_autenticac.png" alt="exemplo imagem">
+<img src="public/img/token_autenticacao.png" alt="exemplo imagem">
 * exemplo de uso no Insominia
 * Inserindo Grupo :
 <img src="public/img/insert_grupo.png" alt="exemplo imagem">
