@@ -47,10 +47,11 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
-* Instalação do versão PHP 8.x 
+* Instalação da versão PHP 8.x 
 * Composer: O Composer é um gerenciador de pacotes PHP que é usado para instalar e gerenciar as dependências do Laravel.
 
 * Servidor Web: Você precisará de um servidor web para executar seu aplicativo Laravel
+
 * Banco de Dados: Mysql 8.0
 
 * Extensões PHP: Certifique-se de que as extensões PHP necessárias estejam habilitadas no seu servidor. O Laravel pode precisar de extensões como PDO, OpenSSL, Mbstring, Tokenizer, XML, Ctype e JSON.
@@ -68,15 +69,17 @@ php artisan migrate
 php artisan serve
 http://localhost:8000
 ```
-não deu tempo atualizar os migrations por tanto será necessário 
+obs: não deu tempo atualizar os migrations por tanto será necessário 
 importar algumas tabelas  que estar no script 
 dabase/tabala.sql
-Em database tambe eoncotra o diagram de entidade relacional
+na pasta database também eoncotra-se o diagrama de entidade relacional
+
+## 🚀 Instalando teste_back_end_php no Docker
 
 Para executar o projeto  teste_back_end_php no DOCKER siga estas etapas:
 
 
-1. Instalar o docker-compose, PHP na versão 8.0 e Mysql
+1. Ter o Docker instalado e configurado em seu computador
 
 2. Docker
 
@@ -88,9 +91,11 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 ```
-3.2 imagem do php 8.0
+3. imagem do php 8.0
 ``` 
-   
+# Imagem base
+FROM php:8.0-apache
+  
 ```
 
 4. Instalar docker-compose
@@ -100,11 +105,11 @@ sudo systemctl enable docker
 
 5. Execute o comando
 ``` 
-   php composer.phar update
+   php composer update
 ``` 
 6. Execute o seguinte comando após atualizar o framework
 ``` 
-    php composer.phar install -vvv
+    php composer install -vvv
 ``` 
 ``` 
     docker-compose up
@@ -144,9 +149,11 @@ através do link  da documentação pode ser realizado os testes.
 <img src="public/img/token_autenticacao.png" alt="exemplo imagem">
 * exemplo de uso no Insominia
 * Inserindo Grupo :
+
 <img src="public/img/insert_grupo.png" alt="exemplo imagem">
 
 * Inserindo Cliente :
+  
 <img src="public/img/insert_cliente.png" alt="exemplo imagem">
 
 * Testando os endpoints via Swagger
