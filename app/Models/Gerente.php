@@ -18,7 +18,10 @@ class Gerente extends Model
      * @var array
      */
     protected $fillable = [
-        // "name",
+         "nome",
+         "email",
+         "id_user",
+         "nivel"
     ];
 
       /**
