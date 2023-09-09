@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Unit\App\Http\Controllers\Api;
+
 use App\Http\Controllers\Api\GrupoController;
 
 use App\Models\Grupo;
@@ -11,20 +12,9 @@ use Tests\TestCase;
 
 class GrupoControllerTest extends TestCase
 {
-   /* public function testStore()
-    {
-        $requestMock = Mockery::mock(GrupoRequest::class)->makePartial();
-        $requestMock->shouldReceive('all')
-            ->andReturn(['includes' => ['nome', 'GrupoTest']]);
-        $grupoMock = $this->createMock(Grupo::class);
-        $requestMock = $this->createMock(GrupoRequest::class);
-        $controller = new GrupoController($grupoMock);
-        $response = $controller->store($requestMock);
-       return  $this->assertEquals(201, $response->getStatusCode());
-    }
-   */
 
-    public function testStore_should_return_403()
+
+    /* public function testStore_should_return_403()
     {
 
         $requestMock = Mockery::mock(GrupoRequest::class)->makePartial();
@@ -38,42 +28,55 @@ class GrupoControllerTest extends TestCase
         $response = $controller->store($requestMock);
        return  $this->assertEquals(403, $response->getStatusCode());
     }
+*/
 
-   /* public function testUpdate_should_return_403()
+
+    /**
+     * Testa o método index do GrupoController.
+     *
+     * @return void
+     */
+    public function testIndex()
     {
+        //Grupo::factory()->create();
+        $token = "1|e5bItJkTZfV2cX8M0mT1CjkPhWHIAwIT4pMLhWGc6b97444b";
+        $response = $this->get(
+            '/api/grupoTest',
+            [
+                'headers' => [
+                    'Authorization' => 'Bearer' . $token,
+                    'Accept' => 'application/json'
+                ]
+            ]
 
-        $requestMock = Mockery::mock(GrupoRequest::class)->makePartial();
-        $requestMock->shouldReceive('all')
-            ->andReturn(['includes' => ['nome', 'GrupoTest']]);
-        $grupoMock = $this->createMock(Grupo::class);
-        $requestMock = $this->createMock(GrupoRequest::class);
-        $controller = new GrupoController($grupoMock);
-
-        $grupoMock->shouldReceive('all')
-        ->andReturn(['includes' => ['nome', 'GrupoAtual']]);
-
-
-        $response = $controller->update($requestMock,$grupoMock);
-        return  $this->assertEquals(403, $response->getStatusCode());
-    }*/
-
-
-    public function testIndex_should_return_403()
-    {
-
-        $requestMock = Mockery::mock(GrupoRequest::class)->makePartial();
-        $requestMock->shouldReceive('all')
-            ->andReturn(['includes' => ['nome', 'GrupoTest']]);
-        $grupoMock = $this->createMock(Grupo::class);
-        $requestMock = $this->createMock(GrupoRequest::class);
-        $controller = new GrupoController($grupoMock);
-        $response = $controller->index($requestMock);
-        return  $this->assertEquals(403, $response->getStatusCode());
+        );
+        $response->assertStatus(403);
     }
 
 
+    /**
+     * Testa o método store do GrupoController.
+     *
+     * @return void
+     */
+  /*  public function testStore()
+    {
 
+        $token = "1|e5bItJkTZfV2cX8M0mT1CjkPhWHIAwIT4pMLhWGc6b97444b";
+        $data = [
+            'nome' => 'Grupo de Teste',
+            [
+                'headers' => [
+                    'Authorization' => 'Bearer' . $token,
+                    'Accept' => 'application/json'
+                ]
+            ]
+        ];
+        $response = $this->post('/api/grupoTest', $data);
+        $response->assertStatus(200);
+        $response->assertJson([
+            'nome' => 'Grupo de Teste',
 
+        ]);
+    }*/
 }
-
-

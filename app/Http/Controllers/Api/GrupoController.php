@@ -53,6 +53,7 @@ class GrupoController extends Controller
 
             $grupoServices = new GrupoServices();
             $grupo = $grupoServices->store($request->validated());
+
             return new GrupoResource($grupo);
         } catch (Exception $e) {
             return response()->json(["status" => "fail", "message" => $e->getMessage()], 500);
