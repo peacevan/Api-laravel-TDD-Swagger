@@ -22,6 +22,9 @@ Em nossa auto peças surgiu a demanda que nossos gerentes pudessem separar nosso
 - [x] Grupos: Código Único, Nome;
 - [x] Clientes e Gerentes podem ser populados automaticamente.
 
+* Diagrama de entidade Relacionam em :
+  database/diagrama_etidade_relacional.mwb  
+
   <img src="public/img/EER_diagram.png" alt="exemplo imagem">
 Objetivo
 - [x] Queremos endpoints para operar os grupos e visualizar os clientes de um grupo.
@@ -86,9 +89,9 @@ http://localhost:8000
  php artisan db:seed --class=ClientesTableSeeder
  php artisan db:seed --class=GerentesTableSeeder
 ```
-* 2º opção importar o Script do Banco de dados que encontra-se em : 
-dabase/scripts_back_db.sql
-na pasta database também eoncotra-se o diagrama de entidade relacional
+* 2º opção importar o Script do Banco de dados com Dados que encontra-se em : 
+dabase/scripts_back_db_with_data.sql
+
 
 ## 🚀 Instalando teste_back_end_php no Docker
 
