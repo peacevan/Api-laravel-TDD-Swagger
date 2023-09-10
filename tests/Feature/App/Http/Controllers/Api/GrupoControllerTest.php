@@ -14,7 +14,7 @@ class GrupoControllerTest extends TestCase
      * @return void
      */
     public $idGrupoCreated;
-    public function test_actingAs_level_two_should_return_index_grupop()
+    public function test_actingAs_level_two_should_return_index_grupo()
     {
         $user = User::whereNivel(2)->first();
         $this->assertEquals(2,$user->nivel);
@@ -29,7 +29,7 @@ class GrupoControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_actingAs_level_two_should_store()
+    public function test_actingAs_level_two_should_store_grupo()
     {
         $user = User::whereNivel(2)->first();
         $this->assertEquals(2,$user->nivel);
@@ -50,7 +50,7 @@ class GrupoControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_actingAs_level_two_should_update()
+    public function test_actingAs_level_two_should_update_grupo()
     {
         $user = User::whereNivel(2)->first();
         $this->assertEquals(2,$user->nivel);
@@ -76,7 +76,7 @@ class GrupoControllerTest extends TestCase
      *
      * @return void
      */
-    public function teste__actingAs_level_two_should_delete()
+    public function teste__actingAs_level_two_should_delete_grupo()
     {
         $user = User::whereNivel(2)->first();
         $this->assertEquals(2,$user->nivel);
@@ -102,7 +102,7 @@ class GrupoControllerTest extends TestCase
      * @return void
      */
 
-    public function test_actingAs_level_one_should_return_index_grupop()
+    public function test_actingAs_level_one_should_return_index_grupo()
     {
         $user = User::whereNivel(1)->first();
         $this->assertEquals(1,$user->nivel);
@@ -116,7 +116,7 @@ class GrupoControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_actingAs_level_one_dont_can_store_grop()
+    public function test_actingAs_level_one_dont_can_store_grupo()
     {
         $user = User::whereNivel(1)->first();
         $this->assertEquals(1,$user->nivel);
@@ -133,7 +133,7 @@ class GrupoControllerTest extends TestCase
      *
      * @return void
      */
-    public function test_actingAs_level_one_dont_can_update_grop()
+    public function test_actingAs_level_one_dont_can_update_grupo()
     {
         $user = User::find(2);
         $this->actingAs($user);
@@ -156,7 +156,7 @@ class GrupoControllerTest extends TestCase
      *
      * @return void
      */
-    public function teste__actingAs_level_one_dont_can_delete_grop()
+    public function teste__actingAs_level_one_dont_can_delete_grupo()
     {
         $user = User::whereNivel(1)->first();
         $this->assertEquals(1,$user->nivel);;

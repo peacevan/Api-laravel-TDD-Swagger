@@ -20,7 +20,7 @@ Em nossa auto peças surgiu a demanda que nossos gerentes pudessem separar nosso
 - [x] Clientes: Código Único, CNPJ, Nome, Data Fundação;
 - [x] Gerentes: Código Único, Nome, E-mail, Nível;
 - [x] Grupos: Código Único, Nome;
-- [ ] Clientes e Gerentes podem ser populados automaticamente.
+- [x] Clientes e Gerentes podem ser populados automaticamente.
 
   <img src="public/img/EER_diagram.png" alt="exemplo imagem">
 Objetivo
@@ -34,13 +34,13 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [x] implementar todos os requisitos solicitados
 - [x] documentar a API com Swagger
-- [ ] Refatorar o código 
+- [x] Refatorar o código 
 - [x] Dockerizar o Projeto 
-- [ ] Testes de integração;
+- [x] Testes de integração;
 - [x] Testes unitários;
 - [x] Tratamento de erros.
-- [ ] implementar autenticação SSO com KeyClock [melhorias]
-- [ ] Clientes e Gerentes podem ser populados automaticamente.
+- [ ] Implementar autenticação Single Sign-On (SSO) com KeyClock [melhorias]
+- [x] Clientes e Gerentes podem ser populados automaticamente.
 - [ ] realizar deploy para a AWS e disponibilizar um IP público para realização de testes
 
 ## 💻 Pré-requisitos
@@ -66,9 +66,18 @@ composer install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
+php artisan db:seed
 php artisan serve
 http://localhost:8000
 ```
+* As tabelas Gerentes e Clientes automáticamente 
+
+```
+ php artisan db:seed --class=GruposTableSeeder
+ php artisan db:seed --class=ClientesTableSeeder
+ php artisan db:seed --class=GerentesTableSeeder
+```
+ 
 obs: não deu tempo atualizar os migrations por tanto será necessário 
 importar algumas tabelas  que estar no script 
 dabase/tabala.sql
@@ -169,5 +178,5 @@ através do link  da documentação pode ser realizado os testes.
 php artisan test
 ```
   <img src="public/img/tests.png" alt="exemplo imagem">
-  
+
 [⬆ Voltar ao topo](#Teste_Back_end_PHP)<br>
