@@ -160,7 +160,7 @@ apresentar credenciais adicionais, como nome de usuário e senha a cada solicita
 através do link  da documentação pode ser realizado os testes.
 
 
-- para ter acesso  aos endpoints protrgidoss é preciso gerar o token de autenticação em 
+- para ter acesso  aos endpoints protegido é preciso gerar o token de autenticação em 
  http://127.0.0.1:8000/api/sanctum/token
 - token precisa ser passado no cabeçalho da requisição
 
