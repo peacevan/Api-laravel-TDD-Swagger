@@ -31,9 +31,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
+
         $clienteServices = new ClienteServices();
         $clientes = $clienteServices->index();
-
         return ClienteResource::collection($clientes);
     }
 
@@ -45,8 +45,6 @@ class ClienteController extends Controller
      */
     public function store(ClienteRequest $request)
     {
-
-
         if (!$this->allowsPermission("can-add-remove-client")){
             return response()->json("Acess Denied", 403);
         }
@@ -75,9 +73,7 @@ class ClienteController extends Controller
      */
     public function update(ClienteRequest $request, Cliente $cliente)
     {
-
-
-        if (!$this->allowsPermission("can-add-remove-client")){
+    if (!$this->allowsPermission("can-add-remove-client")){
             return response()->json("Acess Denied", 403);
         }
         $clienteServices = new ClienteServices();
@@ -97,8 +93,6 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-
-
         if (!$this->allowsPermission("can-add-remove-client")){
             return response()->json("Acess Denied", 403);
         }

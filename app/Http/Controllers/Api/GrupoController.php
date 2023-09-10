@@ -39,8 +39,6 @@ class GrupoController extends Controller
         }
     }
 
-
-
     public function findClitesGrupo($id_grupo)
     {
         try {
@@ -54,10 +52,6 @@ class GrupoController extends Controller
             return response()->json(["status" => "fail", "message" => $e->getMessage()], 500);
         }
     }
-
-
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -91,6 +85,7 @@ class GrupoController extends Controller
         } catch (Exception $e) {
             return response()->json(["status" => "fail", "message" => $e->getMessage()], 500);
         }
+
     }
 
     /**

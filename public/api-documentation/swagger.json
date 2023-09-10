@@ -1402,7 +1402,7 @@
                 "security": [
                     {
                         "bearerToken": []
-                    }''
+                    }
                 ]
             }
         }
