@@ -25,6 +25,6 @@ class Grupo extends Model
      */
     public function clientes(): HasMany
     {
-        return $this->hasMany(Clientes::class);
+        return $this->hasMany(Cliente::class,'id_grupo');
     }
 }

@@ -18,9 +18,6 @@ use App\Http\Controllers\Api\GerenteController;
 |
 */
 
-Route::get('/grupoTest', [GrupoController::class, 'index']);
-Route::resource('/grupoTest', GrupoController::class);
-
 Route::post('/sanctum/token', [UserController::class, 'authenticate']);
 Route::post('/user', [UserController::class, 'store']);
 
@@ -34,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/cliente', ClienteController::class);
 
     Route::get('/grupo', [GrupoController::class, 'index']);
+    Route::get('/clientes-grupo/{idGrupo}', [GrupoController::class, 'findClitesGrupo']);
     Route::resource('/grupo', GrupoController::class);
 
     Route::get('/gerente', [GerenteController::class, 'index']);

@@ -6,6 +6,7 @@ use App\Http\Requests\Api\GrupoRequest;
 use App\Http\Resources\GrupoResource;
 use App\Models\Grupo;
 use App\Services\GrupoServices;
+use Illuminate\Http\Request;
 use Exception;
 
 class GrupoController extends Controller
@@ -37,6 +38,26 @@ class GrupoController extends Controller
             return response()->json(["status" => "fail", "message" => $e->getMessage()], 500);
         }
     }
+
+
+
+    public function findClitesGrupo($id_grupo)
+    {
+        try {
+            if (!$this->allowsPermission("can-viewer-groups")) {
+                return response()->json("Acess Denied", 403);
+            }
+            $grupoServices = new GrupoServices();
+            $grupos = $grupoServices->findClitesGrupo($id_grupo);
+            return GrupoResource::collection($grupos);
+        } catch (Exception $e) {
+            return response()->json(["status" => "fail", "message" => $e->getMessage()], 500);
+        }
+    }
+
+
+
+
 
     /**
      * Store a newly created resource in storage.

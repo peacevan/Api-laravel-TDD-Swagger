@@ -40,6 +40,12 @@ class GrupoServices
     {
         return GrupoRepository::findActiveGrupos();
     }
+    public function findClitesGrupo($grupo): Collection
+    {
+        return GrupoRepository::findClitesGrupo($grupo);
+    }
+
+
 
     /**
      * Store a new resource in storage

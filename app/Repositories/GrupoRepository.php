@@ -32,6 +32,16 @@ class GrupoRepository
             ->get($columns);
     }
 
+     /**
+     * @return Collection
+     */
+    public static function findClitesGrupo($id): Collection
+    {
+       return Grupo::with('Clientes')->findOrFail($id)->get();
+    }
+
+
+
     /**
      * @return Grupo
      */
