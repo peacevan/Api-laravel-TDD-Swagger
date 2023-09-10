@@ -26,7 +26,7 @@ class GrupoController extends Controller
     public function index()
     {
         try {
-            if ($this->deniesPermission("can-viewer-groups")) {
+            if (!$this->allowsPermission("can-viewer-groups")) {
                 return response()->json("Acess Denied", 403);
             }
 
@@ -46,14 +46,14 @@ class GrupoController extends Controller
      */
     public function store(GrupoRequest $request)
     {
+
         try {
-            if ($this->deniesPermission("can-maneger-groups")) {
+            if (!$this->allowsPermission("can-maneger-groups")) {
                 return response()->json("Acess Denied", 403);
             }
 
             $grupoServices = new GrupoServices();
             $grupo = $grupoServices->store($request->validated());
-
             return new GrupoResource($grupo);
         } catch (Exception $e) {
             return response()->json(["status" => "fail", "message" => $e->getMessage()], 500);
@@ -63,10 +63,9 @@ class GrupoController extends Controller
     public function show(Grupo $grupo)
     {
         try {
-            if ($this->deniesPermission("can-viewer-groups")) {
-                return response()->json("Acess Denied", 403);
+            if (!$this->allowsPermission("can-viewer-groups")) {
+            return response()->json("Acess Denied", 403);
             }
-
             return new GrupoResource($grupo);
         } catch (Exception $e) {
             return response()->json(["status" => "fail", "message" => $e->getMessage()], 500);
@@ -83,7 +82,7 @@ class GrupoController extends Controller
     public function update(GrupoRequest $request, Grupo $grupo)
     {
         try {
-            if ($this->deniesPermission("can-maneger-groups")) {
+            if (!$this->allowsPermission("can-maneger-groups")) {
                 return response()->json("Acess Denied", 403);
             }
 
@@ -93,8 +92,7 @@ class GrupoController extends Controller
             if ($updated) {
                 return new GrupoResource($grupo);
             }
-            return response()->json([], 202);
-
+            return response()->json([],201);
         } catch (Exception $e) {
             return response()->json(["status" => "fail", "message" => $e->getMessage()], 500);
         }
@@ -109,7 +107,7 @@ class GrupoController extends Controller
     public function destroy(Grupo $grupo)
     {
         try {
-            if ($this->deniesPermission("can-maneger-groups")) {
+            if (!$this->allowsPermission("can-maneger-groups")) {
                 return response()->json("Acess Denied", 403);
             }
             $grupoServices = new GrupoServices();

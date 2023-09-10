@@ -9,7 +9,6 @@ class Grupo extends Model
     use Traits\Scope;
 
     protected $guarded = ['id'];
-
     public $timestamps = false;
 
     /**
@@ -18,11 +17,11 @@ class Grupo extends Model
      * @var array
      */
     protected $fillable = [
-        "name",
+        "nome",
     ];
 
      /**
-     * Get the comments for the blog post.
+     * Get the clientes for the group.
      */
     public function clientes(): HasMany
     {

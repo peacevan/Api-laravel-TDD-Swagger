@@ -12,8 +12,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function deniesPermission($permission)
+    public function allowsPermission($permission)
     {
-        return Gate::denies(ability: $permission);
+        return Gate::allows(ability: $permission);
     }
 }

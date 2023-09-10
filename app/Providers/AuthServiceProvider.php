@@ -27,23 +27,19 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('can-maneger-groups', function (User $user) {
-            return $user->nivel == 2;
+            return 2==$user->nivel;
         });
 
         Gate::define('can-viewer-groups', function (User $user) {
 
-            if (($user->nivel == 1)||($user->nivel == 2)) {
+            if (($user->nivel === 1)||($user->nivel === 2)) {
                 return true;
             }
             return false;
         });
 
         Gate::define('can-add-remove-client', function (User $user) {
-            if (($user->nivel == 1)) {
-                return true;
-            }
-            return false;
-
+            return 1==$user->nivel;
         });
      }
 

@@ -164,6 +164,10 @@ através do link  da documentação pode ser realizado os testes.
  - clica em authorize  e inserir o token para liberar os endpoints protegidos
    <img src="public/img/authorize.png" alt="exemplo imagem">
 
-
-
+* Test Unititários e de Integração 
+```
+php artisan test
+```
+  <img src="public/img/tests.png" alt="exemplo imagem">
+  
 [⬆ Voltar ao topo](#Teste_Back_end_PHP)<br>

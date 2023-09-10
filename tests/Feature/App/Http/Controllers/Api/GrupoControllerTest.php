@@ -1,82 +1,93 @@
 <?php
 
-namespace Tests\Unit\App\Http\Controllers\Api;
-
+namespace Tests\Feature\App\Http\Controllers\Api;
 use App\Http\Controllers\Api\GrupoController;
-
 use App\Models\Grupo;
-use App\Http\Requests\Api\GrupoRequest;
-use Illuminate\Http\Request;
-use Mockery;
+use App\Models\User;
 use Tests\TestCase;
 
 class GrupoControllerTest extends TestCase
 {
-
-
-    /* public function testStore_should_return_403()
-    {
-
-        $requestMock = Mockery::mock(GrupoRequest::class)->makePartial();
-        $requestMock->shouldReceive('all')
-            ->andReturn(['includes' => ['nome', 'GrupoTest']]);
-
-
-        $grupoMock = $this->createMock(Grupo::class);
-        $requestMock = $this->createMock(GrupoRequest::class);
-        $controller = new GrupoController($grupoMock);
-        $response = $controller->store($requestMock);
-       return  $this->assertEquals(403, $response->getStatusCode());
-    }
-*/
-
-
     /**
      * Testa o método index do GrupoController.
      *
      * @return void
      */
-    public function testIndex()
+    public $idGrupoCreated;
+    public function test_index()
     {
-        //Grupo::factory()->create();
-        $token = "1|e5bItJkTZfV2cX8M0mT1CjkPhWHIAwIT4pMLhWGc6b97444b";
-        $response = $this->get(
-            '/api/grupoTest',
-            [
-                'headers' => [
-                    'Authorization' => 'Bearer' . $token,
-                    'Accept' => 'application/json'
-                ]
-            ]
-
-        );
-        $response->assertStatus(403);
+        $user = User::find(1);
+        $this->assertCount(1, $user->tokens);
+        $this->actingAs($user);
+        $response = $this->get('/api/grupo');
+        $response->assertStatus(200);
     }
-
 
     /**
      * Testa o método store do GrupoController.
      *
      * @return void
      */
-  /*  public function testStore()
+    public function test_store()
     {
+        $user = User::find(1);
+        $this->assertCount(1, $user->tokens);
+        $this->actingAs($user);
 
-        $token = "1|e5bItJkTZfV2cX8M0mT1CjkPhWHIAwIT4pMLhWGc6b97444b";
+        $data = ["nome" => 'Grupo de Teste'];
+        $response = $this->json("post", "/api/grupo", $data);
+         $response->assertStatus(201);
+        $this->idGrupoCreated=$response->json('data.id');
+        $this->assertEquals("Grupo de Teste", $response->json('data.nome'));
+        $this->assertEquals($this->idGrupoCreated, $response->json('data.id'));
+        $this->idGrupoCreated=5;
+    }
+
+    /**
+     * Testa o método store do GrupoController.
+     *
+     * @return void
+     */
+    public function test_update()
+    {
+        $user = User::find(1);
+        $this->assertCount(1, $user->tokens);
+        $this->actingAs($user);
+        $grupo = Grupo::find(3);
+        $grupo =Grupo::latest()->get();
+        $idGrupo=json_decode($grupo)[0]->id;
         $data = [
-            'nome' => 'Grupo de Teste',
-            [
-                'headers' => [
-                    'Authorization' => 'Bearer' . $token,
-                    'Accept' => 'application/json'
-                ]
-            ]
+            "id" =>  $idGrupo,
+            "nome" => 'Grupo de Teste',
         ];
-        $response = $this->post('/api/grupoTest', $data);
+       if ($idGrupo){
+        $data = ["nome" => 'Grupo Updated'];
+        $response = $this->json("put", "/api/grupo/ $idGrupo", $data);
         $response->assertStatus(200);
-        $response->assertJson([
-            'nome' => 'Grupo de Teste',
+        $this->assertEquals("Grupo Updated", $response->json('data.nome'));
+       }
+    }
 
-        ]);
-    }*/
+     /**
+     * Testa o método delte do GrupoController.
+     *
+     * @return void
+     */
+    public function teste_delete()
+    {
+        $user = User::find(1);
+        $this->assertCount(1, $user->tokens);
+        $this->actingAs($user);
+        $grupo =Grupo::latest()->get();
+        $idGrupo=json_decode($grupo)[0]->id;
+        if ($idGrupo) {
+            $response = $this->json("DELETE", "/api/grupo/ $idGrupo");
+            $response->assertStatus(200);
+            $grupo = Grupo::find($idGrupo);
+            $this->assertEquals(Null,$grupo);
+            $this->assertEquals("success", $response->json('status'));
+        } else {
+            $this->assertTrue(true);
+        }
+    }
 }
