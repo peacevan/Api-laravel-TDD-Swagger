@@ -54,6 +54,13 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 * Banco de Dados: Mysql 8.0
 
+* Criar um Banco de dados chamado  drugovich_test
+```
+ -- Dumping database structure for drugovich_test
+   CREATE DATABASE IF NOT EXISTS `drugovich_test` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+   USE `drugovich_test`;
+```
+
 * Extensões PHP: Certifique-se de que as extensões PHP necessárias estejam habilitadas no seu servidor. O Laravel pode precisar de extensões como PDO, OpenSSL, Mbstring, Tokenizer, XML, Ctype e JSON.
 ## 🚀 Instalando teste_back_end_php
 
@@ -70,23 +77,22 @@ php artisan db:seed
 php artisan serve
 http://localhost:8000
 ```
-* As tabelas Gerentes e Clientes automáticamente 
+* Rodar o script scripts_back_db.sql
+  para criar as tabelas grupo,criente,gerentes
+* Clientes e Gerentes podem ser populados automaticamente.
 
 ```
  php artisan db:seed --class=GruposTableSeeder
  php artisan db:seed --class=ClientesTableSeeder
  php artisan db:seed --class=GerentesTableSeeder
 ```
- 
-obs: não deu tempo atualizar os migrations por tanto será necessário 
-importar algumas tabelas  que estar no script 
-dabase/tabala.sql
+* 2º opção importar o Script do Banco de dados que encontra-se em : 
+dabase/scripts_back_db.sql
 na pasta database também eoncotra-se o diagrama de entidade relacional
 
 ## 🚀 Instalando teste_back_end_php no Docker
 
 Para executar o projeto  teste_back_end_php no DOCKER siga estas etapas:
-
 
 1. Ter o Docker instalado e configurado em seu computador
 
