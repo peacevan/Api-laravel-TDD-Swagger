@@ -776,75 +776,6 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/grupo/{id}": {
-            "delete": {
-                "tags": [
-                    "Grupo"
-                ],
-                "summary": "Remove Grupo",
-                "description": "Esse Endpoint remove um grupo.",
-                "operationId": "28ed6b43b348177573bb1e22d5718206",
-                "responses": {
-                    "200": {
-                        "description": "Remove um grupo",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Grupo removido com sucesso !"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Unauthenticated"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Incorrect fields",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "nome do gtru po é obrigatório."
-                                        },
-                                        "errors": {
-                                            "type": "string",
-                                            "example": "..."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerToken": []
-                    }
-                ]
             },
             "patch": {
                 "tags": [
@@ -935,6 +866,150 @@
                     }
                 ]
             }
+        },
+        "/api/clientes-grupo/{id}": {
+            "get": {
+                "tags": [
+                    "Grupo"
+                ],
+                "summary": "listar  clientes do grupo",
+                "description": "This endpoint returns all client of group data",
+                "operationId": "b09a45d1c12745bfb3ca9855f3e92597",
+                "responses": {
+                    "200": {
+                        "description": "Clientes do grupo",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "example": "5"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Clientes do Grpu III"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Incorrect fields",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name has already been taken. (and 2 more errors)"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "..."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+             }
+            },
+
+        "/api/grupo/{id}": {
+            "delete": {
+                "tags": [
+                    "Grupo"
+                ],
+                "summary": "Remove Grupo",
+                "description": "Esse Endpoint remove um grupo.",
+                "operationId": "28ed6b43b348177573bb1e22d5718206",
+                "responses": {
+                    "200": {
+                        "description": "Remove um grupo",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Grupo removido com sucesso !"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Incorrect fields",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "nome do gtru po é obrigatório."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "..."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+
         },
         "/api/sanctum/token": {
             "post": {
