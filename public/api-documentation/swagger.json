@@ -889,6 +889,7 @@
                                         "name": {
                                             "type": "string",
                                             "example": "Clientes do Grpu III"
+
                                         }
                                     },
                                     "type": "object"
